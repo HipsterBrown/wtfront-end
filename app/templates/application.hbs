@@ -1,3 +1,18 @@
-<h2 id='title'>Welcome to Ember.js</h2>
-
-{{outlet}}
+<nav>
+  <div id="tab"><p>&pr;</p></div>
+  <ul>
+    {{#link-to 'about' tagName='li'}}About{{/link-to}}
+    {{#link-to 'stats' tagName='li'}}Stats{{/link-to}}
+    {{#link-to 'credits' tagName='li'}}Credits{{/link-to}}
+  </ul>
+</nav>
+<header>
+  {{#link-to 'index'}}
+  <h1>W<span>hat</span></h1>
+  <h1>T<span>he</span></h1>
+  <h1>F<span>ront-End</span></h1>
+  {{/link-to}}
+</header>
+<div class="main">
+  {{outlet}}
+</div>

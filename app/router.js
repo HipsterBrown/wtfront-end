@@ -3,6 +3,9 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('about');
+  this.resource('stats');
+  this.route('credits');
 });
 
 export default Router;
