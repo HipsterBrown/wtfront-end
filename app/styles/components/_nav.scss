@@ -1,0 +1,72 @@
+nav {
+  font-size: 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 12em;
+  height: 100%;
+  background: white;
+  box-shadow: -1px 0px 2px $light-gray;
+  z-index: 100;
+  text-align: center;
+  @include transform(translateX(100%));
+  @include transition(all 1s ease-in-out);
+
+  &.is-open {
+    @include transform(translateX(0));
+
+    div#tab > p {
+      @include transform(rotate(180deg));
+    }
+  }
+
+  ul {
+    margin-top: 5em;
+    text-align: center;
+
+    li {
+      border-top: 1px solid $medium-gray;
+      cursor: pointer;
+      font-weight: 600;
+      padding: .5em 0;
+
+      &:hover {
+        background: lighten(rgba($red, .8), 5%);
+        color: white;
+      }
+
+      &.active {
+        background: $red;
+        color: white;
+      }
+
+      &:last-of-type {
+        border-bottom: 1px solid $medium-gray;
+      }
+    }
+  }
+}
+
+div#tab {
+  $radius: 30%;
+  width: 3.75em;
+  height: 3.125em;
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  box-shadow: -1px 1px 3px $medium-gray;
+  position: absolute;
+  top: 5em;
+  right: 100%;
+  z-index: -1;
+  cursor: pointer;
+
+  p {
+    @extend %vertical-align;
+    text-align: center;
+    top: 40%;
+    font-size: 3em;
+    display: block;
+    margin: 0;
+    @include transition(all 1s ease-in-out);
+  }
+}
