@@ -3,3 +3,26 @@
   top: 50%;
   @include transform(translateY(-50%));
 }
+
+%button {
+  $red: darken($red, 10%);
+  background: $light-red;
+  box-shadow: 0 4px 0px $red;
+  border: 1px solid $dark-gray;
+  border-radius: 6px;
+  text-shadow: none;
+
+  &:hover:not(:disabled) {
+    background: darken($light-red, 10%);
+    background-image: none;
+    box-shadow: 0 4px 0px $red;
+    border: 1px solid $dark-gray;
+  }
+
+  &:active:not(:disabled), &:focus:not(:disabled) {
+    box-shadow: none;
+    border: 1px solid $dark-gray;
+    @include transform(translateY(4px));
+    outline: none;
+  }
+}

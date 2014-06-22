@@ -1,5 +1,10 @@
 .container {
   @include outer-container;
+  max-width: 80%;
+
+  &.thin {
+    max-width: 50%;
+  }
 }
 
 .quart {
