@@ -14,30 +14,20 @@ header {
 
   h1 {
     opacity: 0;
-    @include animation(fadeIn .5s ease-out);
-    @include animation-fill-mode(forwards);
+    @include animation(fadeIn .5s forwards ease-out);
 
     &:nth-of-type(2) {
       @include animation-delay(.5s);
-
-      span {
-        @include animation-delay(2s);
-      }
     }
 
     &:last-of-type {
       @include animation-delay(1s);
-
-      span {
-        @include animation-delay(2.5s);
-      }
     }
 
     span {
       font-weight: 400;
       opacity: 0;
-      @include animation(fadeIn 1s ease-out 1.5s);
-      @include animation-fill-mode(forwards);
+      @include animation(fadeIn 1s ease-out forwards 1.5s);
     }
   }
 }

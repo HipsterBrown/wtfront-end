@@ -9,3 +9,13 @@
     @include transform(translateX(0));
   }
 }
+
+@include keyframes(appear) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

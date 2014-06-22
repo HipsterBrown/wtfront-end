@@ -1,5 +1,33 @@
 .upper-level {
-  p {
-    text-align: center;
+  h2 {
+    opacity: 0;
+    @include animation(appear 1s ease-out 2.5s);
+    @include animation-fill-mode(forwards);
+
+    &:nth-of-type(2) {
+      @include animation-delay(4.5s);
+    }
+
+    &:last-of-type {
+      @include animation-delay(6.5s);
+    }
   }
+
+  p {
+    opacity: 0;
+    text-align: center;
+    @include animation(appear 1s ease-out 3.5s );
+    @include animation-fill-mode(forwards);
+
+    &:last-of-type {
+      @include animation-delay(5.5s);
+    }
+  }
+}
+
+article.stats {
+  border-bottom: 2px solid $dark-gray;
+  height: 12em;
+  opacity: 0;
+  @include animation(appear 1s ease-out forwards 7.5s);
 }

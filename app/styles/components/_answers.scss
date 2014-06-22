@@ -1,0 +1,32 @@
+section.answers {
+  background: $light-red;
+  height: 100%;
+  padding: 2em 0;
+}
+
+.answer {
+  background: white;
+  //border: 2px solid $dark-gray;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px $red;
+  margin: 2em auto;
+  padding: 2em;
+  position: relative;
+
+  aside.img-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    //@include transform(rotate(45deg));
+    -webkit-clip-path: polygon(50px 0px, 100px 50px, 50px 100px, 0px 50px);
+    clip-path: polygon(50px 0px, 100px 50px, 50px 100px, 0px 50px);
+
+    img {
+      overflow: hidden;
+    }
+  }
+
+  p {
+    padding: .5em 0 0;
+  }
+}

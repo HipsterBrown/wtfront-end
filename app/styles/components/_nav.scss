@@ -32,12 +32,12 @@ nav {
       padding: .5em 0;
 
       &:hover {
-        background: lighten(rgba($red, .8), 5%);
+        background: lighten(rgba($light-red, .8), 5%);
         color: white;
       }
 
       &.active {
-        background: $red;
+        background: $light-red;
         color: white;
       }
 
