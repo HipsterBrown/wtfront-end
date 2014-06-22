@@ -1,0 +1,43 @@
+header {
+  width: intrinsic;
+  width: -moz-max-content;
+  margin: 5em 0 2em;
+
+  a {
+    color: $dark-gray;
+
+    &:hover {
+      color: lighten($dark-gray, 5%);
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    opacity: 0;
+    @include animation(fadeIn .5s ease-out);
+    @include animation-fill-mode(forwards);
+
+    &:nth-of-type(2) {
+      @include animation-delay(.5s);
+
+      span {
+        @include animation-delay(2s);
+      }
+    }
+
+    &:last-of-type {
+      @include animation-delay(1s);
+
+      span {
+        @include animation-delay(2.5s);
+      }
+    }
+
+    span {
+      font-weight: 400;
+      opacity: 0;
+      @include animation(fadeIn 1s ease-out 1.5s);
+      @include animation-fill-mode(forwards);
+    }
+  }
+}

@@ -10,13 +10,14 @@ nav {
   z-index: 100;
   text-align: center;
   @include transform(translateX(100%));
-  @include transition(all 1s ease-in-out);
+  @include transition(all .3s ease-in-out);
 
   &.is-open {
     @include transform(translateX(0));
 
     div#tab > p {
       @include transform(rotate(180deg));
+      top: 25%;
     }
   }
 
@@ -50,7 +51,8 @@ nav {
 div#tab {
   $radius: 30%;
   width: 3.75em;
-  height: 3.125em;
+  height: 2.5em;
+  background: white;
   border-top-left-radius: $radius;
   border-bottom-left-radius: $radius;
   box-shadow: -1px 1px 3px $medium-gray;
@@ -63,10 +65,10 @@ div#tab {
   p {
     @extend %vertical-align;
     text-align: center;
-    top: 40%;
+    top: 45%;
     font-size: 3em;
     display: block;
     margin: 0;
-    @include transition(all 1s ease-in-out);
+    @include transition(all .3s ease-in-out);
   }
 }
