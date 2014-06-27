@@ -6,7 +6,7 @@ nav {
   width: 12em;
   height: 100%;
   background: white;
-  box-shadow: -1px 0px 2px $light-gray;
+  box-shadow: -1px 0px 4px $medium-gray;
   z-index: 100;
   text-align: center;
   @include transform(translateX(100%));

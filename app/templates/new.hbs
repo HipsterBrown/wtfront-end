@@ -1,0 +1,14 @@
+<div class='container new'>
+  <h2>A new answer to the question</h2>
+  {{#if isLoggedIn}}
+  <h1>Thank you for answering {{user.name}}</h1>
+  <form>
+    <p>
+      <label for="answer">Answer</label>
+      {{textarea name='answer' required='true' placeholder='Your answer ipsum here' id='answer'}}
+    </p>
+  </form>
+  {{else}}
+    <button {{action 'login'}}>Login</button>
+  {{/if}}
+</div>
