@@ -12,9 +12,7 @@
     "loader": "stefanpenner/loader.js#1.0.0",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.1",
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.1",
-    "firebase": "~1.0.11",
-    "firebase-simple-login": "~1.4.1",
-    "emberfire": "~1.0.9",
+    "firebase-simple-login": "~1.6.1",
     "bourbon": "~3.2.0",
     "neat": "~1.5.1",
     "bitters": "~0.9.3"
