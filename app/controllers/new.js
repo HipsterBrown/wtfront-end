@@ -8,14 +8,6 @@ var NewController = Ember.ObjectController.extend({
 	avatar: "",
 	skills: ['HTML','CSS', 'Photoshop', 'JavaScript', 'Sass', 'JQuery', 'JavaScript Frameworks'],
 	needSkills: [],
-	pushSkills: function() {
-		var $ = Ember.$,
-			skill = $('li.skill');
-
-		skill.on('checked', function() {
-			window.console.log(this);
-		});
-	}.on('init'),
 	dateAnswered: new Date().toDateString(),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
@@ -67,12 +59,21 @@ var NewController = Ember.ObjectController.extend({
 			this.setProperties({
 				'user': '',
 				'avatar': '',
-				'isLoggedIn': false
+				'answerText': '',
+				'isLoggedIn': false,
+				'needSkills': []
 			});
 			this.transitionTo('index');			
 		},
 		checked: function(skill) { 
-			window.console.log(skill);
+			var skills = this.get('needSkills'),
+				place = skills.indexOf(skill);
+
+			if (place === -1) {
+				skills.pushObject(skill);
+			} else {
+				skills.popObject(skill);
+			}
 		}
 	}
 });
