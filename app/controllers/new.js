@@ -1,7 +1,4 @@
-//import Firebase from "../adapters/application";
-
 var NewController = Ember.ObjectController.extend({
-	needs: ['application'],
 	init: function() {
 		this.set('answer', Ember.Object.create());
 	},
@@ -13,7 +10,29 @@ var NewController = Ember.ObjectController.extend({
 	dateAnswered: new Date().toDateString(),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
-	auth: Ember.computed.alias('controllers.application.auth'),
+	dbRef: null,
+	auth: null,
+	createFirebase: function() {
+		this._super();
+
+		var dbRef = this.get('container').lookup('adapter:application').get('firebase'),
+		app = this,
+		auth = new window.FirebaseSimpleLogin(dbRef, function(error, user) {
+			if (!error && user !== null) {
+				window.console.log(user);
+				app.setProperties({
+					'user': user.username,
+					'avatar': user.thirdPartyUserData.profile_image_url,
+					'isLoggedIn': true
+				});
+				window.console.log('Done!');
+			} else {
+				window.console.log('Error: ' + error);
+			}
+		});
+
+		app.set('auth', auth);
+	}.on('init'),
 	actions: {
 		login: function() {
 			var auth = this.get('auth');
@@ -40,10 +59,7 @@ var NewController = Ember.ObjectController.extend({
 				'user': '',
 				'avatar': '',
 				'isLoggedIn': false
-			});/*
-			this.set('controllers.application.user.name', null);
-			this.set('controllers.application.user.pic', null);
-			this.set('controllers.application.user.loggedIn', false);*/
+			});
 			this.transitionTo('index');			
 		}
 	}
