@@ -5,10 +5,12 @@ var NewController = Ember.ObjectController.extend({
 	init: function() {
 		this.set('answer', Ember.Object.create());
 	},
-	isLoggedIn: Ember.computed.alias('controllers.application.user.loggedIn'),
+	isLoggedIn: false,
 	answerText: "",
-	user: Ember.computed.alias('controllers.application.user.name'),
-	avatar: Ember.computed.alias('controllers.application.user.pic'),
+	user: "",
+	avatar: "",
+	skills: ['HTML','CSS', 'Photoshop', 'JavaScript', 'Sass', 'JQuery', 'JavaScript Frameworks'],
+	dateAnswered: new Date().toDateString(),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
 	auth: Ember.computed.alias('controllers.application.auth'),
@@ -34,9 +36,14 @@ var NewController = Ember.ObjectController.extend({
 			});
 			window.alert('Posted!');*/
 			auth.logout();
+			this.setProperties({
+				'user': '',
+				'avatar': '',
+				'isLoggedIn': false
+			});/*
 			this.set('controllers.application.user.name', null);
 			this.set('controllers.application.user.pic', null);
-			this.set('controllers.application.user.loggedIn', false);
+			this.set('controllers.application.user.loggedIn', false);*/
 			this.transitionTo('index');			
 		}
 	}

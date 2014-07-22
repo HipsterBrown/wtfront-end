@@ -15,10 +15,15 @@ export default Ember.ObjectController.extend({
 		  app = this,
 		  auth = new window.FirebaseSimpleLogin(dbRef, function(error, user) {
 			if (!error && user !== null) {
-				window.console.log(user);
-				app.set('user.name', user.username);
-				app.set('user.pic', user.thirdPartyUserData.profile_image_url);
-				app.set('user.loggedIn', true);
+				window.console.log(user);/*
+				app.set('controllers.new.user', user.username);
+				app.set('controllers.new.avatar', user.thirdPartyUserData.profile_image_url);
+				app.set('controllers.new.isLoggedIn', true);*/
+			    app.setProperties({
+					'controllers.new.user': user.username,
+					'controllers.new.avatar': user.thirdPartyUserData.profile_image_url,
+					'controllers.new.isLoggedIn': true
+				});
 				window.console.log('Done!');
 			} else {
 				window.console.log('Error: ' + error);

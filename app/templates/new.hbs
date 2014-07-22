@@ -7,9 +7,17 @@
       <label for="answer">Answer</label>
       {{textarea name='answer' rows=10 value=answerText required='true' placeholder='Your answer ipsum here' id='answer'}}
     </p>
+	<h3>Skills List</h3>
+	<ul>
+		{{#each skill in controller.skills}}
+		<li>
+			{{input type="checkbox" name=skill id=skill}}<label {{bind-attr for=skill}}>{{skill}}</label>
+		</li>
+		{{/each}}
+	</ul>
   </form>
 	<h3>Preview</h3>
-	{{post-answer user=user avatar=avatar text=answerText }}
+	{{post-answer user=user avatar=avatar text=answerText skills=skills date=dateAnswered }}
 	<button {{action 'post'}}>Post</button>
   {{else}}
     <button {{action 'login'}}>Login</button>

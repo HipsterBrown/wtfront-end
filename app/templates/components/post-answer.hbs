@@ -1,11 +1,8 @@
 <h3>{{user}}</h3><aside class="img-container"><img {{bind-attr src='avatar' }} /></aside>
 <p>{{text}}</p>
 <ul class="skills">
-  <li>Photoshop</li>
-  <li>CSS</li>
-  <li>HTML</li>
-  <li>JavScript</li>
-  <li>Sass</li>
-  <li>JavaScript Frameworks</li>
+{{#each skill in skills}}
+<li>{{skill}}</li>
+{{/each}}
 </ul>
 <p>Posted: {{date}}</p>
