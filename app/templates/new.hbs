@@ -11,7 +11,7 @@
 	<ul>
 		{{#each skill in controller.skills}}
 		<li>
-			{{input type="checkbox" name=skill id=skill}}<label {{bind-attr for=skill}}>{{skill}}</label>
+			{{input type="checkbox" name=skill class="skill" id=skill}}<label {{bind-attr for=skill}}>{{skill}}</label>
 		</li>
 		{{/each}}
 	</ul>

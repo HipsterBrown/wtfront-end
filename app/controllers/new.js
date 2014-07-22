@@ -7,6 +7,15 @@ var NewController = Ember.ObjectController.extend({
 	user: "",
 	avatar: "",
 	skills: ['HTML','CSS', 'Photoshop', 'JavaScript', 'Sass', 'JQuery', 'JavaScript Frameworks'],
+	needSkills: [],
+	pushSkills: function() {
+		var $ = Ember.$,
+			skill = $('li.skill');
+
+		skill.on('checked', function() {
+			window.console.log(this);
+		});
+	}.on('init'),
 	dateAnswered: new Date().toDateString(),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
@@ -61,6 +70,9 @@ var NewController = Ember.ObjectController.extend({
 				'isLoggedIn': false
 			});
 			this.transitionTo('index');			
+		},
+		checked: function(skill) { 
+			window.console.log(skill);
 		}
 	}
 });
