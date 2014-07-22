@@ -45,17 +45,17 @@ var NewController = Ember.ObjectController.extend({
 				user: this.get('user'),
 				avatar: this.get('avatar'),
 				content: this.get('answerText'),
+				answeredAt: this.get('dateAnswered')
 			}),
+			skills = this.get('needSkills'),
 			auth = this.get('auth');
-			/*
+
+			
+
 			newAnswer.save();
-			this.setProperties({
-				'user': '',
-				'avatar': '',
-				'answeredText': ''
-			});
-			window.alert('Posted!');*/
+
 			auth.logout();
+			
 			this.setProperties({
 				'user': '',
 				'avatar': '',
