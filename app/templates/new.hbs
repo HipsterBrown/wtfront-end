@@ -9,8 +9,7 @@
     </p>
   </form>
 	<h3>Preview</h3>
-	<h1>{{user}}</h1>
-	<p>{{output}}</p>
+	{{post-answer user=user avatar=avatar text=answerText }}
 	<button {{action 'post'}}>Post</button>
   {{else}}
     <button {{action 'login'}}>Login</button>

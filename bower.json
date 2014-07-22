@@ -6,15 +6,20 @@
     "qunit": "~1.12.0",
     "ember-qunit": "~0.1.5",
     "ember": "1.5.1",
-    "ember-data": "1.0.0-beta.7",
-    "ember-resolver": "stefanpenner/ember-jj-abrams-resolver#master",
+    "ember-data": "1.0.0-beta.8",
+    "ember-resolver": "~0.1.1",
     "ic-ajax": "~1.x",
     "loader": "stefanpenner/loader.js#1.0.0",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.1",
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.1",
+    "emberfire": "~1.1.1",
     "firebase-simple-login": "~1.6.1",
     "bourbon": "~3.2.0",
     "neat": "~1.5.1",
     "bitters": "~0.9.3"
+  },
+  "devDependencies": {
+    "emberfire": "~1.1.2",
+    "firebase-simple-login": "~1.6.2"
   }
 }

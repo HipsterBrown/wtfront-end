@@ -1,47 +1,43 @@
 //import Firebase from "../adapters/application";
 
-var NewController = Ember.Controller.extend({
+var NewController = Ember.ObjectController.extend({
+	needs: ['application'],
 	init: function() {
 		this.set('answer', Ember.Object.create());
 	},
-	isLoggedIn: false,
+	isLoggedIn: Ember.computed.alias('controllers.application.user.loggedIn'),
 	answerText: "",
-	user: "" || "Anon",
-	avatar: "" || 'http://placehold.it/100.png/E92B2B/ffffff&text=Profile',
+	user: Ember.computed.alias('controllers.application.user.name'),
+	avatar: Ember.computed.alias('controllers.application.user.pic'),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
-	auth: null,/*
-	makeAuth: function() {
-		var ref = this.get('container').lookup('adapter:application').get('firebase'),
-		auth = new window.FirebaseSimpleLogin(ref, function(error, user) {
-			if (!error) {
-					this.set('user', user.id);
-					this.set('isLoggedIn', true);
-					window.alert('Logged In!');
-				} else {
-					window.alert(error);
-				}
-			});
-		this.set('auth', auth);
-	}.on('init'),*/
+	auth: Ember.computed.alias('controllers.application.auth'),
 	actions: {
 		login: function() {
-			this.set('isLoggedIn', true);
+			var auth = this.get('auth');
+
+			auth.login('twitter');
 		},
 		post: function() {
 			var newAnswer = this.store.createRecord('answer', {
 				user: this.get('user'),
 				avatar: this.get('avatar'),
 				content: this.get('answerText'),
-				answeredAt: new Date.getTime()
-			});
+			}),
+			auth = this.get('auth');
+			/*
 			newAnswer.save();
 			this.setProperties({
 				'user': '',
 				'avatar': '',
 				'answeredText': ''
 			});
-			window.alert('Posted!');			
+			window.alert('Posted!');*/
+			auth.logout();
+			this.set('controllers.application.user.name', null);
+			this.set('controllers.application.user.pic', null);
+			this.set('controllers.application.user.loggedIn', false);
+			this.transitionTo('index');			
 		}
 	}
 });
