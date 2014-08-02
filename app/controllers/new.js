@@ -50,34 +50,38 @@ var NewController = Ember.ObjectController.extend({
 			skills = this.get('needSkills'),
 			auth = this.get('auth'),
 			ctrl = this;
-			/*
-			newAnswer.get('skills').then(function() {
-				skills.forEach(function(skill) {
-					newAnswer.get('skills').addObject(this.store.createRecord('skill', {
-						name: skill 
-					}));
-				});
-			});
-			*/
+
 			skills.forEach(function(skill) {
-				window.console.log(skills + ": " + skill);
+				//window.console.log(skills + ": " + skill);
 				newAnswer.get('skills').addObject(ctrl.store.createRecord('skill', {
 					name: skill 
 				}));
 			});
 
 			newAnswer.save().then(function() {
-				auth.logout();
+				//window.console.log(newAnswer.get('answeredAt'));
 
-				ctrl.setProperties({
-					'user': '',
-					'avatar': '',
-					'answerText': '',
-					'isLoggedIn': false,
-					'needSkills': []
+				var promises = Ember.A();
+
+				newAnswer.get('skills').forEach(function(skill) {
+					promises.push(skill.save());
 				});
 
-				ctrl.transitionTo('index');			
+				Ember.RSVP.Promise.all(promises).then(function(resolved) {
+					window.console.log(resolved); 
+					
+					auth.logout();
+
+					ctrl.setProperties({
+						'user': '',
+						'avatar': '',
+						'answerText': '',
+						'isLoggedIn': false,
+						'needSkills': []
+					});
+
+					ctrl.transitionToRoute('index');			
+				});
 			});
 
 		},
