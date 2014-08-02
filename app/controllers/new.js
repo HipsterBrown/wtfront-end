@@ -48,22 +48,38 @@ var NewController = Ember.ObjectController.extend({
 				answeredAt: this.get('dateAnswered')
 			}),
 			skills = this.get('needSkills'),
-			auth = this.get('auth');
-
-			
-
-			newAnswer.save();
-
-			auth.logout();
-			
-			this.setProperties({
-				'user': '',
-				'avatar': '',
-				'answerText': '',
-				'isLoggedIn': false,
-				'needSkills': []
+			auth = this.get('auth'),
+			ctrl = this;
+			/*
+			newAnswer.get('skills').then(function() {
+				skills.forEach(function(skill) {
+					newAnswer.get('skills').addObject(this.store.createRecord('skill', {
+						name: skill 
+					}));
+				});
 			});
-			this.transitionTo('index');			
+			*/
+			skills.forEach(function(skill) {
+				window.console.log(skills + ": " + skill);
+				newAnswer.get('skills').addObject(ctrl.store.createRecord('skill', {
+					name: skill 
+				}));
+			});
+
+			newAnswer.save().then(function() {
+				auth.logout();
+
+				ctrl.setProperties({
+					'user': '',
+					'avatar': '',
+					'answerText': '',
+					'isLoggedIn': false,
+					'needSkills': []
+				});
+
+				ctrl.transitionTo('index');			
+			});
+
 		},
 		checked: function(skill) { 
 			var skills = this.get('needSkills'),
