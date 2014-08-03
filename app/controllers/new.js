@@ -51,20 +51,53 @@ var NewController = Ember.ObjectController.extend({
 			auth = this.get('auth'),
 			ctrl = this;
 
-			skills.forEach(function(skill) {
-				//window.console.log(skills + ": " + skill);
-				newAnswer.get('skills').addObject(ctrl.store.createRecord('skill', {
-					name: skill 
-				}));
+			newAnswer.get('skills').then(function(skillsOb) {
+				skills.forEach(function(skill) {
+					var skillRecord = ctrl.store.createRecord('skill', {
+						name: skill
+					});
+					skillsOb.addObject(skillRecord);
+				});
+
+				newAnswer.save().then(function() {
+					window.console.log('Saved!');
+					var promises = Ember.A();
+
+					newAnswer.get('skills').then(function(skills) {
+						skills.forEach(function(skill) {
+							var savedSkill = skill.save();
+							promises.push(savedSkill);
+						});
+					});
+
+					Ember.RSVP.Promise.all(promises).then(function(resolved) {
+						window.console.log(resolved); 
+
+						auth.logout();
+
+						ctrl.setProperties({
+							'user': '',
+							'avatar': '',
+							'answerText': '',
+							'isLoggedIn': false,
+							'needSkills': []
+						});
+
+						ctrl.transitionToRoute('index');			
+					});
+				});
 			});
 
-			newAnswer.save().then(function() {
+			/*newAnswer.save().then(function() {
 				//window.console.log(newAnswer.get('answeredAt'));
 
 				var promises = Ember.A();
 
-				newAnswer.get('skills').forEach(function(skill) {
-					promises.push(skill.save());
+				newAnswer.get('skills').then(function(skills) {
+					skills.forEach(function(skill) {
+						var savedSkill = skill.save();
+						promises.push(savedSkill);
+					});
 				});
 
 				Ember.RSVP.Promise.all(promises).then(function(resolved) {
@@ -82,7 +115,7 @@ var NewController = Ember.ObjectController.extend({
 
 					ctrl.transitionToRoute('index');			
 				});
-			});
+			});*/
 
 		},
 		checked: function(skill) { 

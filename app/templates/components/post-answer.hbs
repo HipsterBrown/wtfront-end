@@ -1,8 +1,12 @@
 <h3>{{user}}</h3><aside class="img-container"><img {{bind-attr src='avatar' }} /></aside>
 <p>{{text}}</p>
 <ul class="skills">
-{{#each skill in skills}}
-<li>{{skill}}</li>
-{{/each}}
+	{{#each skill in skills}}
+		{{#if skill.name}}
+			<li>{{skill.name}}</li>
+		{{else}}
+			<li>{{skill}}</li>
+		{{/if}}
+	{{/each}}
 </ul>
 <p>Posted: {{date}}</p>

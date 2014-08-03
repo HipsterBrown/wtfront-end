@@ -11,6 +11,6 @@
 </section>
 <section class="answers">
   {{#each}}
-	{{post-answer}}
+	{{post-answer user=user avatar=avatar text=content skills=skills.content date=answeredAt }}
   {{/each}}
 </section>

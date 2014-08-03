@@ -3,7 +3,7 @@ var AnswerModel = DS.Model.extend({
 	avatar: DS.attr('string'),
 	content: DS.attr('string'),
 	answeredAt: DS.attr('string'),
-	skills: DS.hasMany('skill')
+	skills: DS.hasMany('skill', {async: true})
 });
 
 export default AnswerModel;
