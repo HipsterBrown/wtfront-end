@@ -17,7 +17,7 @@
 	</ul>
   </form>
 	<h3>Preview</h3>
-	{{post-answer user=user avatar=avatar text=answerText skills=needSkills date=dateAnswered }}
+	{{post-answer user=user avatar=avatar text=answerText skills=needSkills date=dateAnswered classNames='answer-light' }}
 	<button {{action 'post'}}>Post</button>
   {{else}}
     <button {{action 'login'}}>Login</button>
