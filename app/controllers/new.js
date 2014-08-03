@@ -1,7 +1,7 @@
 var NewController = Ember.ObjectController.extend({
-	init: function() {
+	/*init: function() {
 		this.set('answer', Ember.Object.create());
-	},
+	},*/
 	isLoggedIn: false,
 	answerText: "",
 	user: "",

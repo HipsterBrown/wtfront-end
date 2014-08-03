@@ -3,7 +3,11 @@ export default Ember.View.extend({
 		this._super();
 
 		var $ = Ember.$,
-			skill = $(evt.target).attr('name');
-		this.get('controller').send('checked', skill);
+			skill = $(evt.target).attr('name'),
+			srcEl = evt.target.localName;
+
+		if ( srcEl === "input" ) {
+			this.get('controller').send('checked', skill);
+		}
 	}
 });
