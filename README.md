@@ -11,3 +11,7 @@ Take a look around at the various job boards and portfolio sites. You'll see jus
 - What tools should they know the get hired as a Front-End Developer?
 
 All this and more should be answered by hearing what the community thinks and creating discussions on the matter.
+
+The staging site for the app is on [Firebase](https://wtfront-end-dev.firebaseapp.com). Please check it out and report issues here. 
+
+Thanks!
