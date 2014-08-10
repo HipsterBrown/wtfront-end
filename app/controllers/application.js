@@ -1,4 +1,4 @@
-export default Ember.ObjectController.extend({
+export default Ember.ArrayController.extend({
   isOpen: false,
   actions: {
     open: function() {

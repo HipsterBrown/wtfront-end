@@ -17,7 +17,7 @@ nav {
 
     div#tab > p {
       @include transform(rotate(180deg));
-      top: 25%;
+      top: 33%;
     }
   }
 
@@ -65,7 +65,7 @@ div#tab {
   p {
     @extend %vertical-align;
     text-align: center;
-    top: 45%;
+    top: 40%;
     font-size: 3em;
     display: block;
     margin: 0;

@@ -1,13 +1,28 @@
 @include keyframes(fadeIn) {
   from {
-    opacity: 0;
     @include transform(translateX(100%));
+  }
+
+  80% {
+	  opacity: .5;
   }
 
   to {
     opacity: 1;
     @include transform(translateX(0));
   }
+}
+
+@include keyframes(fadeInBottom) {
+	from {
+		opacity: 0;
+		@include transform(translateY(100%));
+	}
+
+	to {
+		opacity: 1;
+		@include transform(translateY(0));
+	}
 }
 
 @include keyframes(appear) {

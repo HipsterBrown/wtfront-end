@@ -2,6 +2,11 @@ section.answers {
   background: $light-red;
   height: 100%;
   padding: 2em 0;
+
+  .answer {
+	  opacity: 0;
+	  @include animation(fadeInBottom .8s ease-out forwards 7.8s);
+  }
 }
 
 .answer, %answer {
@@ -14,8 +19,10 @@ section.answers {
   overflow: hidden;
   padding: 1em 2em 2em;
   position: relative;
+  text-align: left;
 
-  h3 {
+  h3.user {
+	  padding-bottom: 1em;
 	  text-transform: capitalize;
   }
 
@@ -33,7 +40,25 @@ section.answers {
   }
 
   p {
+	clear: both;
     padding: 1em 0 0;
+  }
+
+  h4.skilled {
+	  padding-top: 1em;
+  }
+
+  ul.skills {
+	  clear: both;
+	  padding: 0 1em 1em;
+	  position: relative;
+
+	  li {
+		  float: left;
+		  list-style-type: disc;
+		  padding-bottom: 1em;
+		  width: 25%;
+	  }
   }
 
   &.answer-light {

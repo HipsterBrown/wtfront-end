@@ -1,0 +1,31 @@
+.new {
+	padding-bottom: 4em;
+	text-align: center;
+
+	h1 {
+		clear: both;
+	}
+
+	h2 {
+		padding-bottom: 1em;
+	}
+
+	label, input {
+		float: left;
+	}
+
+	p {
+		position: relative;
+	}
+
+	ul {
+		@extend %clearfix;
+		padding: 3em 0 5em;
+		position: relative;
+	}
+
+	li {
+		float: left;
+		width: 25%;
+	}
+}

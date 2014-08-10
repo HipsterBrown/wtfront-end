@@ -1,25 +1,26 @@
 <div class='container new'>
-  <h2>A new answer to the question</h2>
+  <h2>What is a front-end developer?</h2>
   {{#if isLoggedIn}}
-  <h1>Thank you for answering {{user}}</h1>
   <form>
     <p>
-      <label for="answer">Answer</label>
-      {{textarea name='answer' rows=10 value=answerText required='true' placeholder='Your answer ipsum here' id='answer'}}
+      <label for="answer">Answer Text</label>
+      {{textarea name='answer' rows=10 value=answerText required='true' placeholder='Your answer in Markdown here' id='answer'}}
     </p>
 	<h3>Skills List</h3>
 	<ul>
 		{{#each skill in controller.skills}}
 		<li>
-			{{input type="checkbox" name=skill class="skill" id=skill}}<label {{bind-attr for=skill}}>{{skill}}</label>
+			<p>{{input type="checkbox" name=skill class="skill" id=skill}}<label {{bind-attr for=skill}}>{{skill}}</label></p>
 		</li>
 		{{/each}}
 	</ul>
   </form>
-	<h3>Preview</h3>
+	<h1>Thank you for your answer, @{{user}}!</h1>
+	<h3>Here is what it will look like:</h3>
 	{{post-answer user=user avatar=avatar text=answerText skills=needSkills date=dateAnswered classNames='answer-light' }}
 	<button {{action 'post'}}>Post</button>
   {{else}}
     <button {{action 'login'}}>Login</button>
+	<p>Please log in with Twitter to add a measure of accountability to your answer</p>
   {{/if}}
 </div>
