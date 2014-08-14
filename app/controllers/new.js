@@ -8,7 +8,7 @@ var NewController = Ember.ObjectController.extend({
 	avatar: "",
 	skills: ['HTML','CSS', 'Photoshop', 'JavaScript', 'Sass', 'JQuery', 'JavaScript Frameworks'],
 	needSkills: [],
-	dateAnswered: new Date().toDateString(),
+	dateAnswered: new Date(),
 	output: Ember.computed.oneWay("answerText"),
 	answer: null,
 	dbRef: null,
