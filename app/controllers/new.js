@@ -45,7 +45,7 @@ var NewController = Ember.ObjectController.extend({
 				user: this.get('user'),
 				avatar: this.get('avatar'),
 				content: this.get('answerText'),
-				answeredAt: this.get('dateAnswered')
+				answeredAt: new Date()
 			}),
 			skills = this.get('needSkills'),
 			auth = this.get('auth'),
@@ -71,7 +71,7 @@ var NewController = Ember.ObjectController.extend({
 					});
 
 					Ember.RSVP.Promise.all(promises).then(function(resolved) {
-						window.console.log(resolved); 
+						window.console.log(resolved);
 
 						auth.logout();
 
@@ -83,7 +83,7 @@ var NewController = Ember.ObjectController.extend({
 							'needSkills': []
 						});
 
-						ctrl.transitionToRoute('index');			
+						ctrl.transitionToRoute('index');
 					});
 				});
 			});
@@ -101,8 +101,8 @@ var NewController = Ember.ObjectController.extend({
 				});
 
 				Ember.RSVP.Promise.all(promises).then(function(resolved) {
-					window.console.log(resolved); 
-					
+					window.console.log(resolved);
+
 					auth.logout();
 
 					ctrl.setProperties({
@@ -113,12 +113,12 @@ var NewController = Ember.ObjectController.extend({
 						'needSkills': []
 					});
 
-					ctrl.transitionToRoute('index');			
+					ctrl.transitionToRoute('index');
 				});
 			});*/
 
 		},
-		checked: function(skill) { 
+		checked: function(skill) {
 			var skills = this.get('needSkills'),
 				place = skills.indexOf(skill);
 

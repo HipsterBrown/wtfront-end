@@ -3,7 +3,7 @@ var PostAnswerComponent = Ember.Component.extend({
 	  var answer = this,
 		store = this.get('store'),
 		skillA = this.get('skillsA');
-	  
+
 	  Ember.RSVP.Promise.cast(answer.get('skills')).then(function(skills) {
 		 window.console.log(skills, skills.content.length);
 
@@ -16,6 +16,11 @@ var PostAnswerComponent = Ember.Component.extend({
   },*/
   tagName: 'article',
   classNames: ['answer', 'card', 'container', 'thin'],
+	dateString: function() {
+		var date = this.get('date');
+
+		return date.toDateString();
+	}.property('date'),
   skillsA: []
 });
 

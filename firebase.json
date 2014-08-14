@@ -1,0 +1,9 @@
+{
+  "firebase": "wtfront-end-dev",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
